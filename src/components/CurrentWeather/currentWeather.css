@@ -1,0 +1,13 @@
+.current_weather {
+    width: 50vw;
+    background-color: rgba(252, 255, 255, 0.7);
+    margin-top: 10px;
+    padding: 0px 5px 5px 5px;
+    border-radius: 20px;
+    text-align: start;
+}
+
+.error_image {
+    width: 20%;
+    height: 50%;
+}
