@@ -18,7 +18,7 @@ const CurrentWeather = ({ country }) => {
 
     useEffect(() => {
         const getCurrentWeatherData = async () => {
-            setLoading(true); // Start loading
+            setLoading(true);
             setIsError(false);
             
             try {

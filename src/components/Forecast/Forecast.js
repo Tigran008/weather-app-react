@@ -4,45 +4,6 @@ import { useState, useEffect } from "react";
 
 const { Meta } = Card;
 
-// const forecastDataa = [
-//     {
-//       date: '2024-08-01',
-//       minTemperature: '20°C',
-//       maxTemperature: '25°C',
-//       description: 'Sunny',
-//       icon: 'https://openweathermap.org/img/wn/01d@2x.png',
-//     },
-//     {
-//       date: '2024-08-02',
-//       minTemperature: '18°C',
-//       maxTemperature: '22°C',
-//       description: 'Cloudy',
-//       icon: 'https://openweathermap.org/img/wn/03d@2x.png',
-//     },
-//     {
-//       date: '2024-08-03',
-//       minTemperature: '15°C',
-//       maxTemperature: '20°C',
-//       description: 'Rainy',
-//       icon: 'https://openweathermap.org/img/wn/09d@2x.png',
-//     },
-//     {
-//       date: '2024-08-04',
-//       minTemperature: '17°C',
-//       maxTemperature: '23°C',
-//       description: 'Partly Cloudy',
-//       icon: 'https://openweathermap.org/img/wn/02d@2x.png',
-//     },
-//     {
-//       date: '2024-08-05',
-//       minTemperature: '19°C',
-//       maxTemperature: '24°C',
-//       description: 'Thunderstorms',
-//       icon: 'https://openweathermap.org/img/wn/11d@2x.png',
-//     },
-// ];
-
-
 const Forecast = ({ country }) => {
   const [forecastData, setForecastData] = useState([]);
 
