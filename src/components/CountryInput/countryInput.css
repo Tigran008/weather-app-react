@@ -1,5 +1,6 @@
 .country_input {
     width: 60vw;
+    margin-top: 13px;
 }
 
 @media (max-width: 797px) { 

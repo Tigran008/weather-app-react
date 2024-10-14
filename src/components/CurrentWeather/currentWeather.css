@@ -18,22 +18,29 @@
 
 @media (max-width: 797px) { 
     .current_weather {
-        width: 80vw;
+        width: 80vw; 
     }
- }
-
+}
 
 @media (max-width: 545px) { 
     .current_weather_main {
         width: 80vw;
-        flex-direction: column;
+        display: flex;
+        flex-direction: column; 
     }
 
     .current_weather_optional {
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .current_weather_optional_text  {
-        font-size: 13px;
+        font-size: 13px; 
     }
- }
+}
+
+@media (max-width: 650px) { 
+    .current_weather_optional_text  {
+        font-size: 16px;
+    }
+}

@@ -12,11 +12,11 @@ function App() {
 
   return (
     <div className="App">
-      <CountryInput setCountry={setCountry}/>
       <Router>
         <Routes>
           <Route path="/" element={
             <>
+              <CountryInput setCountry={setCountry}/>
               <CurrentWeather country={ country }/>
               <Forecast country={ country } onSetDayData={setDayForecastData} />
             </>
