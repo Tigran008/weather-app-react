@@ -1,17 +1,20 @@
 import { getForecastData } from "../../services/weatherService";
 import { Card, Flex } from "antd";
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 
-const Forecast = ({ country }) => {
+const Forecast = ({ country, onSetDayData }) => {
+  const [allData, setAllData] = useState([]);
   const [forecastData, setForecastData] = useState([]);
 
 useEffect(() => {
   const handleGetData = async () => {
     try {
       const data = await getForecastData(country);
+      //console.log(data);
       const dailyData = processDailyForecast(data.list);
+      setAllData(data.list);
       setForecastData(dailyData);
     } catch(error) {
       console.log(error, ">>>>");
@@ -20,6 +23,12 @@ useEffect(() => {
 
   handleGetData();
 }, [country])
+
+const handleSetDayData = (date) => {
+  const dayData = allData.filter(item => item.dt_txt.includes(date))
+
+  onSetDayData(dayData);
+}
 
 const processDailyForecast = (list) => {
   const dailyData = {}
@@ -50,24 +59,27 @@ const processDailyForecast = (list) => {
 return (
     <Flex justify="center" wrap="wrap">
       {forecastData.map((forecast, index) => (
-        <Card
-          key={index}
-          hoverable
-          style = {{
-            width: 150,
-            margin: 10,
-          }}
-          cover = {
-          <Flex justify="center" align="center" style={{ height: 70 }}>
-            <img alt={forecast.description} src={`https://openweathermap.org/img/wn/${forecast.icon}@2x.png`} style={{ width: 80 }} />
-          </Flex>
-          }
-      >
-        <Meta 
-          title={forecast.date} 
-          description={`Min: ${forecast.minTemperature} °C - Max: ${forecast.maxTemperature} °C`} 
-        />
-      </Card>
+        <Link key={index} to={`/details/${index}`}>
+          <Card
+            key={index}
+            onClick={() => handleSetDayData(forecast.date)}
+            hoverable
+            style = {{
+              width: 150,
+              margin: 10,
+            }}
+            cover = {
+            <Flex justify="center" align="center" style={{ height: 70 }}>
+              <img alt={forecast.description} src={`https://openweathermap.org/img/wn/${forecast.icon}@2x.png`} style={{ width: 80 }} />
+            </Flex>
+            }
+          >
+          <Meta 
+            title={forecast.date} 
+            description={`Min: ${forecast.minTemperature} °C - Max: ${forecast.maxTemperature} °C`} 
+          />
+          </Card>
+        </Link>
       ))}
     </Flex>
   );

@@ -1,5 +1,5 @@
 .current_weather {
-    width: 50vw;
+    width: 60vw;
     background-color: rgba(252, 255, 255, 0.7);
     margin-top: 10px;
     padding: 0px 5px 5px 5px;
@@ -7,7 +7,33 @@
     text-align: start;
 }
 
+.current_weather_optional_text {
+    font-size: 20px;
+}
+
 .error_image {
     width: 20%;
     height: 50%;
 }
+
+@media (max-width: 797px) { 
+    .current_weather {
+        width: 80vw;
+    }
+ }
+
+
+@media (max-width: 545px) { 
+    .current_weather_main {
+        width: 80vw;
+        flex-direction: column;
+    }
+
+    .current_weather_optional {
+        justify-content: space-between;
+    }
+
+    .current_weather_optional_text  {
+        font-size: 13px;
+    }
+ }

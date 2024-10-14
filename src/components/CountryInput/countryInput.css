@@ -1,3 +1,9 @@
 .country_input {
-    width: 50vw;
+    width: 60vw;
 }
+
+@media (max-width: 797px) { 
+    .country_input {
+        width: 80vw;
+    }
+ }

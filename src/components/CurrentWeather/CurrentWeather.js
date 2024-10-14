@@ -1,8 +1,8 @@
-import './currentWeather.css';
 import errorImg from '../../images/errorimg.png';
 import { Typography, Flex, Spin } from 'antd';
 import { getCurrentWeather } from '../../services/weatherService';
 import { useEffect, useState } from 'react';
+import './currentWeather.css';
 
 const { Title, Text } = Typography;
 
@@ -78,7 +78,7 @@ const CurrentWeather = ({ country }) => {
                 <Title level={2} mark>{currentWeatherData.city}, {currentWeatherData.country}</Title>
             </Flex>
 
-            <Flex align="center" justify="space-evenly">
+            <Flex align="center" justify="space-evenly" className="current_weather_main">
                 <Text style={{ fontSize: 60, fontWeight: 700, marginRight: 30 }}>{currentWeatherData.temp} °C</Text>
                 <img 
                     src={`https://openweathermap.org/img/wn/${currentWeatherData.icon}@4x.png`} 
@@ -91,25 +91,25 @@ const CurrentWeather = ({ country }) => {
                 </Flex>
             </Flex>
             
-            <Flex justify="space-evenly" style={{ marginTop: 20 }}>
+            <Flex justify="space-evenly" style={{ marginTop: 20 }} className="current_weather_optional">
                 <Flex vertical>
-                    <Text style={{ fontSize: 20 }}>Wind</Text>
-                    <Text style={{ fontWeight: 700, fontSize: 20 }}>{currentWeatherData.wind} km/h</Text>  
+                    <Text className="current_weather_optional_text">Wind</Text>
+                    <Text className="current_weather_optional_text" style={{ fontWeight: 700 }}>{currentWeatherData.wind} km/h</Text>  
                 </Flex>
 
                 <Flex vertical>
-                    <Text style={{ fontSize: 20 }}>Humidity</Text>
-                    <Text style={{ fontWeight: 700, fontSize: 20 }}>{currentWeatherData.humidity}%</Text>  
+                    <Text className="current_weather_optional_text">Humidity</Text>
+                    <Text className="current_weather_optional_text" style={{ fontWeight: 700 }}>{currentWeatherData.humidity}%</Text>  
                 </Flex>
 
                 <Flex vertical>
-                    <Text style={{ fontSize: 20 }}>Visibility</Text>
-                    <Text style={{ fontWeight: 700, fontSize: 20 }}>{currentWeatherData.visibility} km</Text>  
+                    <Text className="current_weather_optional_text">Visibility</Text>
+                    <Text className="current_weather_optional_text" style={{ fontWeight: 700 }}>{currentWeatherData.visibility} km</Text>  
                 </Flex>
 
                 <Flex vertical>
-                    <Text style={{ fontSize: 20 }}>Pressure</Text>
-                    <Text style={{ fontWeight: 700, fontSize: 20 }}>{currentWeatherData.pressure} mb</Text>  
+                    <Text className="current_weather_optional_text">Pressure</Text>
+                    <Text className="current_weather_optional_text" style={{ fontWeight: 700 }}>{currentWeatherData.pressure} mb</Text>  
                 </Flex>
             </Flex>
         </Flex>

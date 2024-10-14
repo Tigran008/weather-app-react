@@ -1,0 +1,16 @@
+.day_weather {
+    width: 60vw;
+    background-color: rgba(252, 255, 255, 0.7);
+    margin-top: 10px;
+    padding: 0px 5px 5px 5px;
+    border-radius: 20px;
+    text-align: start;
+}
+
+@media (max-width: 797px) { 
+    .day_weather {
+        width: 80vw;
+        flex-direction: column;
+        text-align: center;
+    }
+ }
