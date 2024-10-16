@@ -1,0 +1,9 @@
+.forecast_card {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.forecast_card:hover {
+    background-color:silver;
+    transition: 0.2s;
+}

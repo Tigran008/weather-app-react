@@ -1,6 +1,8 @@
 import { Card, Flex } from "antd";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import './forecast.css';
+
 const { Meta } = Card;
 
 const Forecast = ({ allData, isError }) => {
@@ -52,8 +54,8 @@ return (
       {forecastData.map((forecast, index) => (
         <Link key={index} to={`/details/${forecast.date}`}>
           <Card
+            className="forecast_card"
             key={index}
-            hoverable
             style = {{
               width: 150,
               margin: 10,

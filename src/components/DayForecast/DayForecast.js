@@ -3,6 +3,7 @@ import { Flex, Button } from "antd";
 import { useEffect, useState } from "react";
 import { Typography, Card } from "antd";
 import './dayForecast.css';
+
 import { useParams } from "react-router";
 import { Link } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ const { Text, Title } = Typography;
 const DayForecast = ({ allData, isError }) => {
     const [dayForecastData, setDayForecastData] = useState([]);
     const [hourData, setHourData] = useState([]);
+    const [activeCardIndex, setActiveCardIndex] = useState(null);
     const { dayId } = useParams();
 
     useEffect(() => {
@@ -21,7 +23,8 @@ const DayForecast = ({ allData, isError }) => {
                 const dayData = allData.filter(item => item.dt_txt.includes(dayId)); 
                 if (dayData.length > 0) {
                     setDayForecastData(dayData); 
-                    setHourData(dayData[0]); 
+                    setHourData(dayData[0]);
+                    setActiveCardIndex(0); 
                 }
             }
         };
@@ -77,9 +80,12 @@ const DayForecast = ({ allData, isError }) => {
             <Flex justify="center" wrap="wrap">
                 {dayForecastData.map((forecast, index) => (
                     <Card
+                        className={activeCardIndex === index ? 'forecast_card active' : 'forecast_card'}
                         key={index}
-                        onClick={() => setHourData(forecast)} 
-                        hoverable
+                        onClick={() => {
+                            setHourData(forecast);
+                            setActiveCardIndex(index); 
+                        }} 
                         style={{
                             width: 150,
                             margin: 10,

@@ -10,11 +10,6 @@ const CurrentWeather = ({ country, isError }) => {
     const [currentWeatherData, setCurrentWeatherData] = useState({});
     const [loading, setLoading] = useState(true);
 
-    const getCurrentTime = () => {
-        const date = new Date();
-        return date.toLocaleTimeString();
-    }
-
     useEffect(() => {
         const getCurrentWeatherData = async () => {
             setLoading(true);
@@ -66,11 +61,6 @@ const CurrentWeather = ({ country, isError }) => {
  
     return (
         <Flex vertical className="current_weather">
-            <Flex justify="space-between" align="center">
-                <Title level={5} style={{fontWeight: "bold"}}>Current Weather</Title>
-                <Text strong> {getCurrentTime()} </Text>
-            </Flex>
-
             <Flex justify="center">
                 <Title level={2} mark>{currentWeatherData.city}, {currentWeatherData.country}</Title>
             </Flex>
