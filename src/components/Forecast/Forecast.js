@@ -1,34 +1,21 @@
-import { getForecastData } from "../../services/weatherService";
 import { Card, Flex } from "antd";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 const { Meta } = Card;
 
-const Forecast = ({ country, onSetDayData }) => {
-  const [allData, setAllData] = useState([]);
+const Forecast = ({ allData, isError }) => {
   const [forecastData, setForecastData] = useState([]);
 
 useEffect(() => {
-  const handleGetData = async () => {
-    try {
-      const data = await getForecastData(country);
-      //console.log(data);
-      const dailyData = processDailyForecast(data.list);
-      setAllData(data.list);
+  
+  const handleSetData = async () => {
+      const dailyData = processDailyForecast(allData);
       setForecastData(dailyData);
-    } catch(error) {
-      console.log(error, ">>>>");
-    } 
+    
   } 
 
-  handleGetData();
-}, [country])
-
-const handleSetDayData = (date) => {
-  const dayData = allData.filter(item => item.dt_txt.includes(date))
-
-  onSetDayData(dayData);
-}
+  handleSetData();
+}, [allData])
 
 const processDailyForecast = (list) => {
   const dailyData = {}
@@ -57,12 +44,15 @@ const processDailyForecast = (list) => {
 }
 
 return (
+    !isError
+
+    &&
+
     <Flex justify="center" wrap="wrap">
       {forecastData.map((forecast, index) => (
-        <Link key={index} to={`/details/${index}`}>
+        <Link key={index} to={`/details/${forecast.date}`}>
           <Card
             key={index}
-            onClick={() => handleSetDayData(forecast.date)}
             hoverable
             style = {{
               width: 150,

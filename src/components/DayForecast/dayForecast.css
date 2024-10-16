@@ -7,6 +7,11 @@
     text-align: start;
 }
 
+.error_image {
+    width: 20%;
+    height: 60%;
+}
+
 @media (max-width: 797px) { 
     .day_weather {
         width: 80vw;

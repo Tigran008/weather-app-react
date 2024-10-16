@@ -7,12 +7,24 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     text-align: center;
 }
 
 @media (max-width: 545px) { 
-  .App {
-    height: auto;
-  }
+    .current_weather_main {
+        width: 80vw;
+        display: flex;
+        flex-direction: column; 
+    }
+
+    .current_weather_optional {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .current_weather_optional_text  {
+        font-size: 13px; 
+    }
 }

@@ -2,8 +2,6 @@ import './countryInput.css'
 import { Input } from 'antd';
 const { Search } = Input;
 
-
-
 const CountryInput = ({ setCountry }) => {
 
     const handleSearch = (value) => {

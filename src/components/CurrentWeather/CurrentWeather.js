@@ -6,10 +6,9 @@ import './currentWeather.css';
 
 const { Title, Text } = Typography;
 
-const CurrentWeather = ({ country }) => {
+const CurrentWeather = ({ country, isError }) => {
     const [currentWeatherData, setCurrentWeatherData] = useState({});
     const [loading, setLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
 
     const getCurrentTime = () => {
         const date = new Date();
@@ -19,7 +18,6 @@ const CurrentWeather = ({ country }) => {
     useEffect(() => {
         const getCurrentWeatherData = async () => {
             setLoading(true);
-            setIsError(false);
             
             try {
                 const data = await getCurrentWeather(country);
@@ -40,7 +38,6 @@ const CurrentWeather = ({ country }) => {
                     setLoading(false)                
                 } else {
                     setLoading(false);
-                    setIsError(true);
                 }
             } catch(error) {
                 console.error("Failed to fetch weather data.");
